@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#050308">
+    <title>MARVEL — Our Story ❤️</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- CURSOR GLOW -->
+    <div class="cursor-glow"></div>
+
+    <!-- PARTICLES -->
+    <canvas id="particles"></canvas>
+
+    <!-- FLOATING HEARTS -->
+    <div class="hearts-layer" id="heartsLayer"></div>
+
+    <!-- =========================
+         PASSWORD SCREEN
+    ========================== -->
+    <section class="gate" id="gate">
+
+        <div class="gate-stars"></div>
+
+        <div class="gate-content">
+
+            <div class="tiny-label">A SECRET PLACE</div>
+
+            <div class="gate-heart">♥</div>
+
+            <h1>MARVEL</h1>
+
+            <p class="gate-subtitle">
+                مكان صغير معمول مخصوص ليكي ❤️
+            </p>
+
+            <p class="gate-hint">
+                فيه حاجة هنا مش هتتفتح غير ليكي
+            </p>
+
+            <div class="password-box">
+                <input
+                    id="passwordInput"
+                    type="password"
+                    placeholder="اكتبي كلمة السر..."
+                    autocomplete="off"
+                >
+
+                <button id="unlockBtn">
+                    افتحي الباب
+                    <span>→</span>
+                </button>
+            </div>
+
+            <p class="wrong-password" id="wrongPassword">
+                لأ 😂 جربي تاني يا مارڤل ❤️
+            </p>
+
+            <div class="gate-footer">
+                made with a ridiculous amount of love
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- =========================
+         MAIN EXPERIENCE
+    ========================== -->
+    <main id="experience" class="experience hidden">
+
+        <!-- HERO -->
+        <section class="hero section">
+
+            <div class="hero-image"></div>
+            <div class="hero-overlay"></div>
+
+            <div class="hero-content reveal">
+
+                <div class="eyebrow">
+                    ONE YEAR • ONE STORY • ONE HEART
+                </div>
+
+                <h2>
+                    مارڤل...
+                    <br>
+                    <span>استني شوية ❤️</span>
+                </h2>
+
+                <p>
+                    أنا مش عامل صفحة...
+                    <br>
+                    أنا عامل لكِ مكان صغير جوا قلبي.
+                </p>
+
+                <button class="scroll-btn" data-scroll="counter">
+                    كمّلي
+                    <span>↓</span>
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- COUNTER -->
+        <section class="counter-section section" id="counter">
+
+            <div class="section-number">01</div>
+
+            <div class="counter-content reveal">
+
+                <div class="mini-title">
+                    ONE YEAR OF LOVING YOU
+                </div>
+
+                <h2>
+                    سنة كاملة...
+                </h2>
+
+                <p class="big-line">
+                    ولسه بحبك.
+                </p>
+
+                <div class="counter-grid">
+
+                    <div class="counter-card">
+                        <strong id="days">365</strong>
+                        <span>يوم</span>
+                    </div>
+
+                    <div class="counter-card">
+                        <strong id="hours">00</strong>
+                        <span>ساعة</span>
+                    </div>
+
+                    <div class="counter-card">
+                        <strong id="minutes">00</strong>
+                        <span>دقيقة</span>
+                    </div>
+
+                    <div class="counter-card">
+                        <strong id="seconds">00</strong>
+                        <span>ثانية</span>
+                    </div>
+
+                </div>
+
+                <p class="soft-text">
+                    وكل ثانية منهم كانت تستاهل.
+                </p>
+
+            </div>
+        </section>
+
+
+        <!-- IMAGE 1 -->
+        <section class="visual-section section">
+
+            <div class="visual-image image-one"></div>
+
+            <div class="visual-caption reveal">
+
+                <span>THE BEGINNING</span>
+
+                <h2>
+                    "من سنة..."
+                </h2>
+
+                <p>
+                    كان فيه شخص بيحبك جدًا،
+                    وإنتِ حتى مكنتيش عارفة.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BIG MESSAGE 1 -->
+        <section class="letter-section section">
+
+            <div class="letter-card reveal">
+
+                <div class="letter-icon">♡</div>
+
+                <div class="letter-label">
+                    LETTER 01
+                </div>
+
+                <h2>
+                    مارڤل...
+                </h2>
+
+                <p>
+                    أنا مش عارف إمتى بالظبط بقيتي جزء من يومي،
+                    بس عارف إن اليوم اللي مفيهوش كلام منك
+                    بيبقى ناقص حاجة.
+                </p>
+
+                <p>
+                    يمكن أنا مش دايمًا بعرف أقول اللي جوايا
+                    بالطريقة الصح،
+                    بس الحقيقة البسيطة جدًا هي:
+                    <strong>أنا بحبك.</strong>
+                </p>
+
+                <p>
+                    وبحب وجودك،
+                    وبحب تفاصيلك،
+                    وبحب حتى الحاجات الصغيرة
+                    اللي يمكن إنتِ نفسك مش واخدة بالك منها.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SHORT MESSAGES -->
+        <section class="short-messages section">
+
+            <div class="section-heading reveal">
+
+                <span>02 • LITTLE THINGS</span>
+
+                <h2>
+                    شوية حاجات صغيرة...
+                </h2>
+
+                <p>
+                    بس كل واحدة فيهم من قلبي.
+                </p>
+
+            </div>
+
+            <div class="message-cloud">
+
+                <div class="tiny-message">إنتِ حتة حلوة من يومي ❤️</div>
+
+                <div class="tiny-message">لسه بحبك بالمناسبة.</div>
+
+                <div class="tiny-message">ضحكتك دي مشكلة 😂❤️</div>
+
+                <div class="tiny-message">أنا محظوظ بيكي.</div>
+
+                <div class="tiny-message">ممنوع تزعلي النهارده.</div>
+
+                <div class="tiny-message">أيوه... إنتِ المقصودة.</div>
+
+                <div class="tiny-message">تعالي هنا 🫵🏻❤️</div>
+
+                <div class="tiny-message">قلبي اختارك إنتِ.</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- 6 MONTHS -->
+        <section class="six-months section">
+
+            <div class="six-bg"></div>
+
+            <div class="six-content reveal">
+
+                <div class="mini-title">
+                    SIX MONTHS OF US
+                </div>
+
+                <div class="six-number">
+                    06
+                </div>
+
+                <h2>
+                    أول 6 شهور...
+                </h2>
+
+                <p>
+                    كنت أنا بس اللي عارف قد إيه أنا بحبك.
+                </p>
+
+                <p>
+                    وبعدها بقى عندي أجمل إحساس:
+                    إني عرفت إن قلبك اختارني أنا كمان.
+                </p>
+
+                <div class="mutual-heart">
+                    ♥
+                </div>
+
+                <span>
+                    ودي من أجمل الحاجات اللي حصلتلي.
+                </span>
+
+            </div>
+
+        </section>
+
+
+        <!-- IMAGE 2 -->
+        <section class="visual-section section">
+
+            <div class="visual-image image-two"></div>
+
+            <div class="visual-caption reveal">
+
+                <span>THE FEELING</span>
+
+                <h2>
+                    "وبعدين..."
+                </h2>
+
+                <p>
+                    بقى الحب مش من ناحية واحدة.
+                    بقى إحنا الاتنين.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- BIG MESSAGE 2 -->
+        <section class="letter-section dark-letter section">
+
+            <div class="letter-card reveal">
+
+                <div class="letter-icon">♥</div>
+
+                <div class="letter-label">
+                    LETTER 02
+                </div>
+
+                <h2>
+                    لو الدنيا اتقلبت...
+                </h2>
+
+                <p>
+                    أنا مش هقولك إن كل يوم هيكون مثالي،
+                    ولا إننا عمرنا ما هنختلف،
+                    ولا إن الدنيا هتفضل سهلة.
+                </p>
+
+                <p>
+                    بس أوعدك بحاجة واحدة:
+                    لما الدنيا تضيق،
+                    هفضل عايز أكون الشخص
+                    اللي تلاقيه جنبك.
+                </p>
+
+                <p>
+                    لأن بالنسبة لي،
+                    الحب مش بس كلام حلو.
+                    الحب إن الواحد يفضل موجود.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- IMAGE 3 -->
+        <section class="visual-section section">
+
+            <div class="visual-image image-three"></div>
+
+            <div class="visual-caption reveal">
+
+                <span>A LETTER FOR YOU</span>
+
+                <h2>
+                    "آخر حاجة..."
+                </h2>
+
+                <p>
+                    في كلام كتير لسه نفسي أقوله.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL LETTER -->
+        <section class="final-letter section">
+
+            <div class="final-glow"></div>
+
+            <div class="final-content reveal">
+
+                <div class="mini-title">
+                    THE LAST LETTER
+                </div>
+
+                <h2>
+                    مارڤل،
+                </h2>
+
+                <p class="final-big">
+                    أنا بحبك أكتر مما بعرف أشرح.
+                </p>
+
+                <p>
+                    سنة عدت،
+                    وممكن الزمن يغير حاجات كتير،
+                    بس فيه حاجة واحدة نفسي متتغيرش:
+                    إنك تفضلي الشخص اللي قلبي بيرتاح له.
+                </p>
+
+                <p>
+                    شكرًا على كل ضحكة،
+                    كل كلمة،
+                    كل لحظة،
+                    وكل مرة خليتي الدنيا أخف عليا.
+                </p>
+
+                <p>
+                    وشكرًا إن بعد ما كنت بحبك لوحدي،
+                    بقيتي بتحبيني إنتِ كمان.
+                </p>
+
+                <div class="signature">
+                    من شخص بيحبك جدًا...
+                    <br>
+                    <strong>مينا ❤️</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL SECRET -->
+        <section class="secret-section section">
+
+            <div class="secret-content reveal">
+
+                <div class="lock">🔐</div>
+
+                <h2>
+                    لسه في سر أخير...
+                </h2>
+
+                <p>
+                    لو وصلتي لهنا،
+                    يبقى تستاهلي تعرفيه.
+                </p>
+
+                <button id="secretBtn" class="magic-btn">
+                    افتحي السر ❤️
+                </button>
+
+                <div id="secretMessage" class="secret-message">
+
+                    <span>
+                        السر هو...
+                    </span>
+
+                    <strong>
+                        إني لسه في أول الحكاية.
+                    </strong>
+
+                    <small>
+                        365 يوم مش النهاية.
+                        دول بس أول فصل.
+                    </small>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MUSIC -->
+        <section class="music-section section">
+
+            <div class="music-content reveal">
+
+                <div class="music-disc">
+                    ♪
+                </div>
+
+                <span class="mini-title">
+                    ONE LAST THING
+                </span>
+
+                <h2>
+                    فيه أغنية...
+                </h2>
+
+                <p>
+                    وكل ما أسمعها،
+                    بحس إنها لازم تكون هنا.
+                </p>
+
+                <button id="playSong" class="music-button">
+                    🎧 شغلي الأغنية من أولها
+                </button>
+
+                <div id="playerContainer" class="player-container">
+
+                    <div id="youtubePlayer"></div>
+
+                </div>
+
+                <p class="music-note">
+                    ارفعي الصوت شوية ❤️
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- END -->
+        <section class="ending section">
+
+            <div class="ending-stars"></div>
+
+            <div class="ending-content reveal">
+
+                <span>CHAPTER ONE</span>
+
+                <h2>
+                    سنة كاملة...
+                </h2>
+
+                <div class="ending-line">
+                    365 DAYS
+                </div>
+
+                <p>
+                    وإحنا لسه بنبدأ.
+                </p>
+
+                <div class="big-heart">
+                    ♥
+                </div>
+
+                <h3>
+                    كل سنة وإنتِ حبيبتي يا مارڤل ❤️
+                </h3>
+
+                <small>
+                    — مينا
+                </small>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
