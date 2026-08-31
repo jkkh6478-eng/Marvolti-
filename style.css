@@ -1,0 +1,1011 @@
+:root {
+    --bg: #050308;
+    --bg2: #0b050c;
+    --red: #ff3158;
+    --red-soft: #ff6b86;
+    --pink: #ff9aae;
+    --white: #fff7f9;
+    --muted: #b9aeb3;
+    --glass: rgba(255,255,255,.055);
+    --border: rgba(255,255,255,.11);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: "Cairo", sans-serif;
+    overflow-x: hidden;
+}
+
+body.locked {
+    overflow: hidden;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* =====================
+   PARTICLES
+===================== */
+
+#particles {
+    position: fixed;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+    opacity: .65;
+}
+
+/* =====================
+   CURSOR
+===================== */
+
+.cursor-glow {
+    position: fixed;
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 2;
+    background: radial-gradient(
+        circle,
+        rgba(255, 49, 88, .12),
+        transparent 65%
+    );
+    transform: translate(-50%, -50%);
+}
+
+/* =====================
+   GATE
+===================== */
+
+.gate {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 45%, rgba(255,30,75,.12), transparent 35%),
+        #030205;
+    transition:
+        opacity 1s ease,
+        transform 1.2s cubic-bezier(.77,0,.18,1);
+}
+
+.gate.exit {
+    opacity: 0;
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
+.gate-stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, rgba(255,255,255,.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,120,150,.6) 1px, transparent 1px);
+    background-size: 90px 90px, 130px 130px;
+    animation: starsMove 25s linear infinite;
+    opacity: .5;
+}
+
+@keyframes starsMove {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-90px);
+    }
+}
+
+.gate-content {
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    width: min(92%, 560px);
+    animation: gateIn 1.5s ease forwards;
+}
+
+@keyframes gateIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.tiny-label,
+.mini-title,
+.eyebrow {
+    letter-spacing: 4px;
+    font-size: 11px;
+    color: var(--red-soft);
+}
+
+.gate-heart {
+    font-size: 80px;
+    color: var(--red);
+    text-shadow:
+        0 0 20px rgba(255,49,88,.8),
+        0 0 80px rgba(255,49,88,.35);
+    animation: heartBeat 2s ease-in-out infinite;
+    margin: 25px 0 5px;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.15);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
+
+.gate h1 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(60px, 15vw, 110px);
+    letter-spacing: 12px;
+    font-weight: 500;
+}
+
+.gate-subtitle {
+    color: var(--white);
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.gate-hint {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 12px 0 25px;
+}
+
+.password-box {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 350px;
+    margin: auto;
+}
+
+.password-box input {
+    width: 100%;
+    padding: 16px 20px;
+    text-align: center;
+    color: white;
+    background: rgba(255,255,255,.06);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    outline: none;
+    transition: .3s;
+}
+
+.password-box input:focus {
+    border-color: rgba(255,49,88,.6);
+    box-shadow: 0 0 30px rgba(255,49,88,.12);
+}
+
+.password-box button,
+.magic-btn,
+.music-button {
+    border: 0;
+    padding: 15px 22px;
+    border-radius: 14px;
+    color: white;
+    background: linear-gradient(135deg, #ff3158, #b51238);
+    box-shadow: 0 15px 45px rgba(255,49,88,.2);
+    transition: .35s;
+}
+
+.password-box button:hover,
+.magic-btn:hover,
+.music-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 60px rgba(255,49,88,.35);
+}
+
+.password-box button span {
+    margin-right: 10px;
+}
+
+.wrong-password {
+    opacity: 0;
+    color: #ff738d;
+    margin-top: 12px;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.wrong-password.show {
+    opacity: 1;
+}
+
+.gate-footer {
+    margin-top: 35px;
+    color: #6d6368;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* =====================
+   MAIN
+===================== */
+
+.experience {
+    position: relative;
+    overflow: hidden;
+}
+
+.section {
+    position: relative;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    padding: 100px 7%;
+}
+
+.hero {
+    min-height: 100svh;
+    overflow: hidden;
+}
+
+.hero-image {
+    position: absolute;
+    inset: -5%;
+    background:
+        linear-gradient(
+            180deg,
+            rgba(3,2,5,.2),
+            rgba(3,2,5,.8)
+        ),
+        url("https://images.pexels.com/photos/10087474/pexels-photo-10087474.jpeg?auto=compress&cs=tinysrgb&w=1800")
+        center / cover;
+    filter: saturate(.8);
+    animation: slowZoom 16s ease-in-out infinite alternate;
+}
+
+@keyframes slowZoom {
+    from {
+        transform: scale(1);
+    }
+    to {
+        transform: scale(1.08);
+    }
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, transparent 0%, rgba(5,3,8,.5) 65%, #050308 100%);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    text-align: center;
+    max-width: 800px;
+}
+
+.hero h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 9vw, 105px);
+    line-height: 1.05;
+    margin: 25px 0;
+}
+
+.hero h2 span {
+    color: var(--red-soft);
+}
+
+.hero p {
+    color: #ddd0d4;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.scroll-btn {
+    margin-top: 40px;
+    padding: 13px 25px;
+    border: 1px solid rgba(255,255,255,.2);
+    border-radius: 100px;
+    background: rgba(255,255,255,.05);
+    color: white;
+    transition: .3s;
+}
+
+.scroll-btn:hover {
+    background: rgba(255,255,255,.12);
+}
+
+/* =====================
+   COUNTER
+===================== */
+
+.counter-section {
+    background:
+        radial-gradient(circle at 50% 40%, rgba(255,49,88,.08), transparent 40%),
+        var(--bg);
+}
+
+.counter-content {
+    text-align: center;
+    width: min(100%, 900px);
+}
+
+.counter-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 7vw, 85px);
+    margin-top: 20px;
+}
+
+.big-line {
+    color: var(--red-soft);
+    font-size: clamp(28px, 4vw, 50px);
+}
+
+.counter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin: 60px 0 30px;
+}
+
+.counter-card {
+    padding: 30px 15px;
+    border: 1px solid var(--border);
+    background: var(--glass);
+    border-radius: 20px;
+    backdrop-filter: blur(12px);
+}
+
+.counter-card strong {
+    display: block;
+    font-size: clamp(30px, 5vw, 60px);
+    font-weight: 500;
+    font-family: "Playfair Display", serif;
+}
+
+.counter-card span {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.soft-text {
+    color: #8e858a;
+}
+
+/* =====================
+   VISUALS
+===================== */
+
+.visual-section {
+    overflow: hidden;
+}
+
+.visual-image {
+    position: absolute;
+    inset: 0;
+    background-position: center;
+    background-size: cover;
+    transition: transform 1.2s ease;
+}
+
+.visual-section:hover .visual-image {
+    transform: scale(1.04);
+}
+
+.image-one {
+    background:
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.8)),
+        url("https://images.pexels.com/photos/10087474/pexels-photo-10087474.jpeg?auto=compress&cs=tinysrgb&w=1800")
+        center / cover;
+}
+
+.image-two {
+    background:
+        linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.8)),
+        url("https://images.pexels.com/photos/887349/pexels-photo-887349.jpeg?auto=compress&cs=tinysrgb&w=1800")
+        center / cover;
+}
+
+.image-three {
+    background:
+        linear-gradient(180deg, rgba(0,0,0,.1), rgba(0,0,0,.85)),
+        url("https://images.pexels.com/photos/7978313/pexels-photo-7978313.jpeg?auto=compress&cs=tinysrgb&w=1800")
+        center / cover;
+}
+
+.visual-caption {
+    position: relative;
+    z-index: 4;
+    width: min(90%, 850px);
+    text-align: center;
+}
+
+.visual-caption span {
+    color: var(--red-soft);
+    letter-spacing: 4px;
+    font-size: 11px;
+}
+
+.visual-caption h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 9vw, 100px);
+    margin: 20px 0;
+}
+
+.visual-caption p {
+    font-size: 20px;
+    color: #eee;
+}
+
+/* =====================
+   LETTERS
+===================== */
+
+.letter-section {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(255,49,88,.08), transparent 30%),
+        var(--bg2);
+}
+
+.letter-card {
+    width: min(900px, 100%);
+    padding: clamp(35px, 7vw, 85px);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    background: rgba(255,255,255,.035);
+    box-shadow: 0 40px 120px rgba(0,0,0,.35);
+    backdrop-filter: blur(15px);
+}
+
+.letter-icon {
+    color: var(--red);
+    font-size: 40px;
+}
+
+.letter-label {
+    margin-top: 20px;
+    color: var(--red-soft);
+    font-size: 11px;
+    letter-spacing: 4px;
+}
+
+.letter-card h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 6vw, 70px);
+    margin: 20px 0 35px;
+}
+
+.letter-card p {
+    color: #d7ccd1;
+    font-size: clamp(16px, 2vw, 20px);
+    line-height: 2.2;
+    margin-bottom: 25px;
+}
+
+.letter-card strong {
+    color: white;
+}
+
+/* =====================
+   SHORT MESSAGES
+===================== */
+
+.short-messages {
+    display: block;
+    padding-top: 130px;
+    padding-bottom: 130px;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 70px;
+}
+
+.section-heading h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(40px, 6vw, 70px);
+    margin: 15px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+.message-cloud {
+    max-width: 1000px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px;
+}
+
+.tiny-message {
+    padding: 18px 24px;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    background: rgba(255,255,255,.035);
+    color: #e8dce1;
+    transition: .4s;
+    animation: floatMessage 5s ease-in-out infinite;
+}
+
+.tiny-message:nth-child(2) {
+    animation-delay: .5s;
+}
+
+.tiny-message:nth-child(3) {
+    animation-delay: 1s;
+}
+
+.tiny-message:nth-child(4) {
+    animation-delay: 1.5s;
+}
+
+.tiny-message:nth-child(5) {
+    animation-delay: 2s;
+}
+
+@keyframes floatMessage {
+    0%,100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.tiny-message:hover {
+    color: white;
+    border-color: rgba(255,49,88,.5);
+    transform: translateY(-5px) scale(1.03);
+}
+
+/* =====================
+   SIX MONTHS
+===================== */
+
+.six-months {
+    overflow: hidden;
+}
+
+.six-bg {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at center, rgba(255,49,88,.25), transparent 35%),
+        linear-gradient(135deg, #050308, #17060e, #050308);
+}
+
+.six-content {
+    position: relative;
+    text-align: center;
+    max-width: 800px;
+}
+
+.six-number {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(100px, 20vw, 240px);
+    line-height: .9;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,105,135,.5);
+}
+
+.six-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 7vw, 80px);
+    margin: 20px 0;
+}
+
+.six-content p {
+    color: #d6cbd0;
+    font-size: 19px;
+    line-height: 2;
+}
+
+.mutual-heart {
+    font-size: 55px;
+    color: var(--red);
+    margin: 30px 0 10px;
+    animation: heartBeat 2s infinite;
+}
+
+.six-content > span {
+    color: var(--muted);
+}
+
+/* =====================
+   FINAL
+===================== */
+
+.dark-letter {
+    background:
+        radial-gradient(circle at 80% 30%, rgba(255,49,88,.08), transparent 30%),
+        #030205;
+}
+
+.final-letter {
+    background:
+        radial-gradient(circle at 50% 50%, rgba(255,49,88,.11), transparent 40%),
+        #050308;
+}
+
+.final-content {
+    max-width: 850px;
+    text-align: center;
+}
+
+.final-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(60px, 10vw, 110px);
+    margin: 20px 0;
+}
+
+.final-big {
+    font-size: clamp(25px, 4vw, 42px) !important;
+    color: var(--red-soft) !important;
+}
+
+.final-content p {
+    color: #d8cdd2;
+    font-size: 18px;
+    line-height: 2.2;
+    margin-bottom: 25px;
+}
+
+.signature {
+    margin-top: 50px;
+    color: #8e858a;
+    line-height: 2;
+}
+
+.signature strong {
+    color: white;
+    font-size: 25px;
+}
+
+/* =====================
+   SECRET
+===================== */
+
+.secret-section {
+    background: #020104;
+}
+
+.secret-content {
+    text-align: center;
+    max-width: 650px;
+}
+
+.lock {
+    font-size: 55px;
+    margin-bottom: 20px;
+}
+
+.secret-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(45px, 7vw, 75px);
+}
+
+.secret-content p {
+    color: var(--muted);
+    margin: 20px 0 30px;
+}
+
+.secret-message {
+    display: none;
+    margin-top: 40px;
+    animation: secretIn 1s ease;
+}
+
+.secret-message.show {
+    display: block;
+}
+
+.secret-message span,
+.secret-message strong,
+.secret-message small {
+    display: block;
+}
+
+.secret-message span {
+    color: var(--red-soft);
+}
+
+.secret-message strong {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(35px, 6vw, 65px);
+    margin: 15px 0;
+}
+
+.secret-message small {
+    color: var(--muted);
+}
+
+@keyframes secretIn {
+    from {
+        opacity: 0;
+        transform: scale(.8);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* =====================
+   MUSIC
+===================== */
+
+.music-section {
+    background:
+        radial-gradient(circle at center, rgba(255,49,88,.12), transparent 35%),
+        #070308;
+}
+
+.music-content {
+    text-align: center;
+    max-width: 700px;
+}
+
+.music-disc {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 35px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    font-size: 40px;
+    background:
+        radial-gradient(circle, #1b0a12 20%, #09050a 22%, #111 65%, #050308 66%);
+    border: 2px solid rgba(255,255,255,.1);
+    box-shadow: 0 0 60px rgba(255,49,88,.25);
+}
+
+.music-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(55px, 8vw, 90px);
+    margin: 15px 0;
+}
+
+.music-content > p {
+    color: var(--muted);
+    margin-bottom: 35px;
+}
+
+.player-container {
+    display: none;
+    margin: 35px auto 0;
+    width: 100%;
+    max-width: 720px;
+    overflow: hidden;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: #000;
+}
+
+.player-container.show {
+    display: block;
+}
+
+#youtubePlayer {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+}
+
+#youtubePlayer iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.music-note {
+    margin-top: 18px;
+    font-size: 12px;
+}
+
+/* =====================
+   ENDING
+===================== */
+
+.ending {
+    overflow: hidden;
+    background:
+        radial-gradient(circle at center, rgba(255,49,88,.17), transparent 30%),
+        #030205;
+}
+
+.ending-stars {
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(circle, white 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,100,130,.8) 1px, transparent 1px);
+    background-size: 80px 80px, 130px 130px;
+    opacity: .35;
+    animation: starsMove 30s linear infinite;
+}
+
+.ending-content {
+    position: relative;
+    text-align: center;
+    z-index: 3;
+}
+
+.ending-content > span {
+    color: var(--red-soft);
+    letter-spacing: 5px;
+    font-size: 11px;
+}
+
+.ending-content h2 {
+    font-family: "Playfair Display", serif;
+    font-size: clamp(60px, 11vw, 130px);
+    margin: 25px 0;
+}
+
+.ending-line {
+    color: var(--red-soft);
+    letter-spacing: 8px;
+    font-size: 13px;
+}
+
+.ending-content p {
+    margin-top: 15px;
+    color: var(--muted);
+}
+
+.big-heart {
+    font-size: 90px;
+    color: var(--red);
+    text-shadow: 0 0 50px rgba(255,49,88,.6);
+    margin: 30px 0;
+    animation: heartBeat 2s infinite;
+}
+
+.ending-content h3 {
+    font-size: clamp(20px, 4vw, 35px);
+}
+
+.ending-content small {
+    display: block;
+    margin-top: 20px;
+    color: var(--muted);
+}
+
+/* =====================
+   REVEAL
+===================== */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(60px);
+    transition:
+        opacity 1.2s ease,
+        transform 1.2s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =====================
+   FLOATING HEARTS
+===================== */
+
+.heart-particle {
+    position: fixed;
+    z-index: 50;
+    pointer-events: none;
+    color: var(--red);
+    animation: riseHeart 3s ease forwards;
+}
+
+@keyframes riseHeart {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(.5) rotate(0deg);
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-300px) scale(1.4) rotate(25deg);
+    }
+}
+
+/* =====================
+   MOBILE
+===================== */
+
+@media (max-width: 700px) {
+
+    .section {
+        padding: 80px 6%;
+    }
+
+    .counter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .counter-card {
+        padding: 22px 10px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+
+    .visual-caption p {
+        font-size: 16px;
+    }
+
+    .letter-card {
+        border-radius: 22px;
+    }
+
+    .letter-card p {
+        font-size: 16px;
+        line-height: 2;
+    }
+
+    .tiny-message {
+        font-size: 13px;
+        padding: 14px 18px;
+    }
+
+    .cursor-glow {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+  }
